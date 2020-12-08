@@ -67,7 +67,6 @@ class UserManController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $userMan->setPassword($passwordEncoder->encodePassword($userMan, $userMan->getPassword()));
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('user_man_index');
