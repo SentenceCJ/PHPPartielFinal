@@ -12,11 +12,30 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Album[]    findAll()
  * @method Album[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
+
+
+    
 class AlbumRepository extends ServiceEntityRepository
 {
+
+    
+
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Album::class);
+    }
+
+    /**
+    * @param integer $number
+    * @return Album[]
+    */
+    public function findTop(int $number){
+        $qb = $this->createQueryBuilder('a')
+        ->orderBy('a.releaseYear', 'DESC')
+        ->setMaxResults($number);
+
+        return $qb->getQuery()->getResult();
     }
 
     // /**

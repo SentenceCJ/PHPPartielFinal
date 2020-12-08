@@ -20,7 +20,7 @@ class IndexController extends AbstractController
         $album = $albumRepository->findTop(30);
 
         return $this->render('base.html.twig', [
-            'album' => '$album',
+            'album' => $album,
         ]);
     }
 }

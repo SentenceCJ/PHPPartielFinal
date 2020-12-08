@@ -29,8 +29,19 @@
                 </ul>
             </div>
         </nav>
+        
         <div class="container">
             {% block body %}{% endblock %}
+        </div>
+        <div class="card mb-5" style="width: 18rem;">
+            {% for albu in album %}
+            <img src="{{ albu.cover }}" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">{{ albu.name }}</h5>
+                <p class="card-text">Realeased in : {{ albu.releaseYear }}</p>
+                <p class="card-text">By : {{ albu.artist.name }}</p>
+            </div>
+            {% endfor %}
         </div>
         {% block javascripts %}
         <script
